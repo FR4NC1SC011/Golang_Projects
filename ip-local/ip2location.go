@@ -7,7 +7,7 @@ import (
 	"github.com/ip2location/ip2location-go"
 )
 
-func main() {
+func ayer() {
 	db, err := ip2location.OpenDB("IP2LOCATION-LITE-DB11.BIN")
 
 	if err != nil {
