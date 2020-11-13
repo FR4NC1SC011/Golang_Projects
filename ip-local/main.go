@@ -15,6 +15,7 @@ func echo(conn net.Conn) {
 	if _, err := io.Copy(conn, conn); err != nil {
 		log.Fatalln("Unable to read write data")
 	}
+
 }
 
 func list() {
@@ -27,9 +28,10 @@ func list() {
 	for {
 		conn, err := listener.Accept()
 		log.Println("Received Connection")
-		strRemoteAddr := conn.RemoteAddr().String()
-		fmt.Println("Remote Address: " + strRemoteAddr)
-		Ip2Loc(strRemoteAddr)
+		//	strRemoteAddr := conn.RemoteAddr().String()
+		addr := conn.RemoteAddr().(*net.TCPAddr).String()
+		fmt.Println("Remote Address: " + addr)
+		Ip2Loc(addr)
 
 		if err != nil {
 			log.Fatalln("Unable to accept connection")
